@@ -1,8 +1,8 @@
-package com.example.trade;
+package com.example.tradeprocessor.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.CreatedDate;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -10,11 +10,15 @@ import java.time.LocalDate;
 public class Trade {
     @Id
     @GeneratedValue
-    Long id;
-    String trader;
-    LocalDate tradeDate;
-    TradeCurrency tradeCurrency;
-    BigDecimal amount;
+    @Column(name="ID", nullable=false, unique=true, length=11)
+    private Long id;
+    private String trader;
+    //@Column(columnDefinition = "DATETIME")
+    @CreatedDate
+    private LocalDate tradeDate;
+    @Enumerated(EnumType.STRING)
+    private TradeCurrency tradeCurrency;
+    private BigDecimal amount;
 
 
     public Trade() {

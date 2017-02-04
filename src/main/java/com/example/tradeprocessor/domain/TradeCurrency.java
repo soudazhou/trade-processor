@@ -1,4 +1,4 @@
-package com.example.trade;
+package com.example.tradeprocessor.domain;
 
 public enum TradeCurrency {
     GBP,
