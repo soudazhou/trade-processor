@@ -10,4 +10,6 @@ public interface TradeComparator {
    List<Trade> getAllCSVTrades();
 
    List<Trade> getAllDatabaseTrades();
+
+   void insertTradeintoDb(Trade trade);
 }

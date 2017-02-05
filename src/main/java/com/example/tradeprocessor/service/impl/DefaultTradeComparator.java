@@ -10,14 +10,14 @@ import java.util.List;
 @Service
 public class DefaultTradeComparator implements TradeComparator {
     @Autowired
-    CSVTradeLoader csvTradeLoader;
+    CSVTradeManager csvTradeManager;
     @Autowired
-    DBTradeLoader dbTradeLoader;
+    DBTradeManager dbTradeManager;
 
     @Override
     public String compareTrades() {
-        List<Trade> dbTrades = dbTradeLoader.getAllTrades();
-        List<Trade> csvTrades = csvTradeLoader.getAllTrades();
+        List<Trade> dbTrades = dbTradeManager.getAllTrades();
+        List<Trade> csvTrades = csvTradeManager.getAllTrades();
         //compare
         StringBuilder sb = new StringBuilder();
         sb.append("Comparison Report: ");
@@ -40,11 +40,16 @@ public class DefaultTradeComparator implements TradeComparator {
 
     @Override
     public List<Trade> getAllCSVTrades() {
-        return csvTradeLoader.getAllTrades();
+        return csvTradeManager.getAllTrades();
     }
 
     @Override
     public List<Trade> getAllDatabaseTrades() {
-        return dbTradeLoader.getAllTrades();
+        return dbTradeManager.getAllTrades();
+    }
+
+    @Override
+    public void insertTradeintoDb(Trade trade) {
+        dbTradeManager.insertTradeintoDb(trade);
     }
 }

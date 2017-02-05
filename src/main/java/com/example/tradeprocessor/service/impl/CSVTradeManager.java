@@ -2,7 +2,7 @@ package com.example.tradeprocessor.service.impl;
 
 import com.example.tradeprocessor.domain.Trade;
 import com.example.tradeprocessor.domain.TradeCurrency;
-import com.example.tradeprocessor.service.TradeLoader;
+import com.example.tradeprocessor.service.TradeManager;
 import com.opencsv.CSVReader;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CSVTradeLoader implements TradeLoader {
+public class CSVTradeManager implements TradeManager {
 
     private File loadFile(String fileName) {
         ClassLoader classLoader = getClass().getClassLoader();
@@ -43,5 +43,10 @@ public class CSVTradeLoader implements TradeLoader {
         }
         System.out.println(trades);
         return trades;
+    }
+
+    @Override
+    public void insertTradeintoDb(Trade trade) {
+
     }
 }
