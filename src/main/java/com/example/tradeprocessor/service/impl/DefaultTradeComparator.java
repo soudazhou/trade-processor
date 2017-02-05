@@ -37,4 +37,14 @@ public class DefaultTradeComparator implements TradeComparator {
 
         return sb.toString();
     }
+
+    @Override
+    public List<Trade> getAllCSVTrades() {
+        return csvTradeLoader.getAllTrades();
+    }
+
+    @Override
+    public List<Trade> getAllDatabaseTrades() {
+        return dbTradeLoader.getAllTrades();
+    }
 }
