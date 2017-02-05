@@ -24,23 +24,24 @@ public class CSVTradeLoader implements TradeLoader {
     }
 
     @Override
-    public List<Trade> getAllTrades() throws IOException {
-        CSVReader reader = new CSVReader(new FileReader(loadFile("inputfiles/data.csv")), ',' , '"' , 1);
+    public List<Trade> getAllTrades() {
 
         List<Trade> trades = new ArrayList<>();
         String[] record = null;
-
-        while ((record = reader.readNext()) != null) {
-            Trade trade = new Trade();
-            trade.setId(Long.parseLong(record[0]));
-            trade.setTrader(record[1]);
-            trade.setTradeDate(LocalDate.parse(record[2]));
-            trade.setTradeCurrency(TradeCurrency.valueOf(record[3]));
-            trade.setAmount(new BigDecimal(record[4]));
-            trades.add(trade);
+        try(CSVReader reader = new CSVReader(new FileReader(loadFile("input/data.csv")), ',', '"', 1)) {
+            while ((record = reader.readNext()) != null) {
+                Trade trade = new Trade();
+                trade.setId(Long.parseLong(record[0]));
+                trade.setTrader(record[1].trim());
+                trade.setTradeDate(LocalDate.parse(record[2].trim()));
+                trade.setTradeCurrency(TradeCurrency.valueOf(record[3].trim()));
+                trade.setAmount(new BigDecimal(record[4].trim()));
+                trades.add(trade);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         System.out.println(trades);
-        reader.close();
         return trades;
     }
 }

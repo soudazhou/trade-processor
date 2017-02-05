@@ -63,4 +63,15 @@ public class Trade {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "Trade{" +
+                "id=" + id +
+                ", trader='" + trader + '\'' +
+                ", tradeDate=" + tradeDate +
+                ", tradeCurrency=" + tradeCurrency +
+                ", amount=" + amount +
+                '}';
+    }
 }
