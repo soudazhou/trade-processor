@@ -9,5 +9,5 @@ spring:
  jpa:
    database: mysql
    hibernate:
-    ddl-auto: update #create a new table each time
+    ddl-auto: create #create a new table each time
    show-sql: true
