@@ -1,0 +1,13 @@
+spring:
+ profiles:
+  active: prod
+ datasource:
+   driver-class-name: com.mysql.jdbc.Driver
+   url: jdbc:mysql://127.0.0.1:3306/tradedb
+   username: root
+   password: 1234
+ jpa:
+   database: mysql
+   hibernate:
+    ddl-auto: create #create a new table each time
+   show-sql: true

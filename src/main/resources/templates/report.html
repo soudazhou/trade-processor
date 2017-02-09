@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> trade-processor </title>
+</head>
+
+<body bgcolor="white" text="blue">
+
+<h1> Trade Comparision report</h1>
+
+<div class = "container">
+    <h2>trades from CSV file</h2>
+    <table class = "table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Trader</th>
+            <th>TradeDate</th>
+            <th>Currency</th>
+            <th>Amount</th>
+        </tr>
+        <tr th:each="csvTrade : ${csvTrades}">
+            <td th:text="${csvTrade.id}"></td>
+            <td th:text="${csvTrade.trader}"></td>
+            <td th:text="${csvTrade.tradeDate}"></td>
+            <td th:text="${csvTrade.tradeCurrency}"></td>
+            <td th:text="${csvTrade.amount}"></td>
+        </tr>
+    </table>
+    <h2>trades from the database</h2>
+    <table class = "table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Trader</th>
+            <th>TradeDate</th>
+            <th>Currency</th>
+            <th>Amount</th>
+        </tr>
+        <tr th:each="dbTrade : ${dbTrades}">
+            <td th:text="${dbTrade.id}"></td>
+            <td th:text="${dbTrade.trader}"></td>
+            <td th:text="${dbTrade.tradeDate}"></td>
+            <td th:text="${dbTrade.tradeCurrency}"></td>
+            <td th:text="${dbTrade.amount}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

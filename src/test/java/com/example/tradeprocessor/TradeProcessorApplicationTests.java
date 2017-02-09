@@ -1,4 +1,4 @@
-package com.example;
+package com.example.tradeprocessor;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
